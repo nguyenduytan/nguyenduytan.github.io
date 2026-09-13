@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="description" content="Tony Nguyễn — Developer, Builder, Problem Solver." />
+  <meta property="og:title" content="Tony Nguyễn — Developer" />
+  <meta property="og:description" content="Developer • Builder • Problem Solver" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://new.id.vn/" />
+  <title>Tony Nguyễn — Developer</title>
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: rgba(22, 27, 34, 0.82);
+      --panel-2: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --green: #3fb950;
+      --blue: #58a6ff;
+      --purple: #bc8cff;
+      --orange: #d29922;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(88,166,255,.12), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(188,140,255,.10), transparent 28%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, #000, transparent 85%);
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(calc(100% - 36px), var(--max)); margin: 0 auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(13,17,23,.72);
+      border-bottom: 1px solid rgba(48,54,61,.7);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 20px rgba(63,185,80,.75);
+    }
+
+    .nav-links { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 48px;
+      align-items: center;
+      padding: 70px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before { content: "$"; color: var(--muted); }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      margin: 0 0 22px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #e6edf3, #58a6ff 52%, #bc8cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      max-width: 650px;
+      font-size: clamp(18px, 2vw, 22px);
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .typing {
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.1em;
+      margin-left: 4px;
+      vertical-align: -.14em;
+      background: var(--green);
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 17px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      font-weight: 650;
+      transition: .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: #6e7681; }
+    .btn.primary { background: #238636; border-color: #2ea043; }
+    .btn.coffee { background: #ffdd00; border-color: #ffdd00; color: #111; }
+    .btn.paypal { background: #0070ba; border-color: #0070ba; color: #fff; }
+
+    .heart {
+      display: inline-block;
+      color: #ff4d4f;
+      margin: 0 5px;
+      transform-origin: center;
+      animation: heartbeat 1.15s ease-in-out infinite;
+      filter: drop-shadow(0 0 8px rgba(255,77,79,.35));
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.22); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.16); }
+      70% { transform: scale(1); }
+    }
+
+    .terminal {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(13,17,23,.78);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .term-bar {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+      background: rgba(22,27,34,.9);
+      border-bottom: 1px solid var(--border);
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    .term-title {
+      margin-left: 8px;
+      color: var(--muted);
+      font: 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    pre {
+      margin: 0;
+      padding: 26px;
+      min-height: 360px;
+      overflow: auto;
+      color: #c9d1d9;
+      font: 14px/1.9 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      white-space: pre-wrap;
+    }
+    .cmd { color: var(--green); }
+    .key { color: var(--blue); }
+    .val { color: var(--purple); }
+    .comment { color: #6e7681; }
+
+    section { padding: 84px 0; }
+    .section-head { margin-bottom: 28px; }
+    .kicker {
+      color: var(--green);
+      font: 13px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    h2 { font-size: clamp(32px, 5vw, 52px); letter-spacing: -.04em; margin: 8px 0 0; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      min-height: 180px;
+      transition: .2s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: #6e7681; }
+    .card .num {
+      color: var(--muted);
+      font: 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      margin-bottom: 34px;
+    }
+    .card h3 { margin: 0 0 10px; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(22,27,34,.72);
+      font: 13px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #c9d1d9;
+    }
+
+    .quote {
+      padding: 34px;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: linear-gradient(90deg, rgba(88,166,255,.1), rgba(22,27,34,.55));
+      color: #c9d1d9;
+      font: 18px/1.7 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    footer {
+      padding: 34px 0 46px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 64px 0; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      pre { min-height: 320px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-dot"></span>
+        tony@dev
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#focus">focus</a>
+        <a href="#stack">stack</a>
+        <a href="https://github.com/nguyenduytan" target="_blank" rel="noreferrer">github ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">whoami</div>
+        <h1>Hi, I'm <span class="gradient">Tony Nguyễn.</span></h1>
+
+        <p class="lead">
+          Developer • Builder • Problem Solver.<br>
+          I like building <span class="typing" id="typing">useful things with code</span><span class="cursor"></span>
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/nguyenduytan" target="_blank" rel="noreferrer">View GitHub ↗</a>
+          <a class="btn" href="#focus">Explore my work ↓</a>
+          <a class="btn coffee" href="https://buymeacoffee.com/nguyenduytan" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
+          <a class="btn paypal" href="https://www.paypal.com/paypalme/copbeo" target="_blank" rel="noreferrer">PayPal.me</a>
+        </div>
+      </div>
+
+      <div class="terminal" aria-label="Terminal profile">
+        <div class="term-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="term-title">tony@new.id.vn: ~</span>
+        </div>
+
+        <pre><span class="cmd">$ whoami</span>
+Tony Nguyễn
+
+<span class="cmd">$ cat profile.json</span>
+{
+  <span class="key">"role"</span>: <span class="val">"Developer / Builder"</span>,
+  <span class="key">"focus"</span>: [
+    <span class="val">"Web"</span>,
+    <span class="val">"Automation"</span>,
+    <span class="val">"Developer Tools"</span>,
+    <span class="val">"Open Source"</span>
+  ],
+  <span class="key">"website"</span>: <span class="val">"new.id.vn"</span>,
+  <span class="key">"status"</span>: <span class="val">"building..."</span>
+}
+
+<span class="cmd">$ echo $MINDSET</span>
+Keep it simple.
+Make it work.
+Make it better.</pre>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">01 / about</div>
+          <h2>I build things for the web.</h2>
+        </div>
+
+        <div class="quote">
+          I enjoy turning ideas into practical tools, experimenting with technology,
+          and shipping software that is simple, useful, and easy to maintain.
+        </div>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">02 / focus</div>
+          <h2>What I like to build.</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="num">[ 01 ]</div>
+            <h3>Browser Extensions</h3>
+            <p>Small tools that remove repetitive work and make everyday browsing better.</p>
+          </article>
+
+          <article class="card">
+            <div class="num">[ 02 ]</div>
+            <h3>Automation</h3>
+            <p>Workflows and utilities that save time, reduce manual steps, and keep things moving.</p>
+          </article>
+
+          <article class="card">
+            <div class="num">[ 03 ]</div>
+            <h3>Developer Tools</h3>
+            <p>Tools made for builders: debugging, productivity, experiments, and open-source ideas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">03 / stack</div>
+          <h2>Tools I work with.</h2>
+        </div>
+
+        <div class="stack">
+          <span class="chip">JavaScript</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">PHP</span>
+          <span class="chip">Python</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">Git</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">Docker</span>
+          <span class="chip">VS Code</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>
+        Made with <span class="heart" aria-label="love">♥</span> by
+        <a href="https://nguyenduytan.com" target="_blank" rel="noreferrer"><strong>Tony Nguyen</strong></a>
+      </div>
+      <div>Built with code, coffee & too many browser tabs.</div>
+    </div>
+  </footer>
+
+  <script>
+    const phrases = [
+      "useful things with code",
+      "developer tools",
+      "browser extensions",
+      "automation workflows",
+      "open-source experiments"
+    ];
+
+    const target = document.getElementById("typing");
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let deleting = false;
+
+    function typeLoop() {
+      const phrase = phrases[phraseIndex];
+
+      if (deleting) {
+        charIndex--;
+      } else {
+        charIndex++;
+      }
+
+      target.textContent = phrase.slice(0, charIndex);
+
+      if (!deleting && charIndex === phrase.length) {
+        deleting = true;
+        setTimeout(typeLoop, 1250);
+        return;
+      }
+
+      if (deleting && charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+
+      setTimeout(typeLoop, deleting ? 45 : 75);
+    }
+
+    setTimeout(() => {
+      deleting = true;
+      typeLoop();
+    }, 1400);
+
+  </script>
+</body>
+</html>
